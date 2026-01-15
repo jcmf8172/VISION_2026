@@ -1,7 +1,7 @@
 ' VISION_2026: test_object.bas
-' Prueba de las propiedades Name e ID
+' Prueba de las propiedades Name e ID (Usando TObject.bi consolidado)
 
-#include "TObject.bas"
+#include "TObject.bi"
 
 ' Clase derivada para probar la sobreescritura de Name
 Type TDerived Extends TObject
@@ -13,7 +13,7 @@ Virtual Property TDerived.Name() As String
 End Property
 
 ' --- Programa Principal ---
-Print "--- VISION_2026: Property System Test ---"
+Print "--- VISION_2026: Consolidated Object Test ---"
 
 Dim As TObject Ptr obj1 = New TObject
 Dim As TObject Ptr obj2 = New TDerived
