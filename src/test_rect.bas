@@ -49,6 +49,16 @@ Else
     Print "  Resultado con RFar (100,100 a 150,150): NO COLISIONA"
 End If
 
+' Prueba de Union
+Dim As TRect __rUnion = r1->GetUnion(__rFar)
+Print ""
+Print "Verificando Union de R1 y RFar:"
+Print "  R1   : (10,10) a (50,40)"
+Print "  RFar : (100,100) a (150,150)"
+Print "  Union: (" & __rUnion._A._X & "," & __rUnion._A._Y & ") a (" & __rUnion._B._X & "," & __rUnion._B._Y & ")"
+Print "  Ancho Union: " & __rUnion.Width()
+Print "  Alto Union : " & __rUnion.Height()
+
 Delete r1
 Delete r2
 

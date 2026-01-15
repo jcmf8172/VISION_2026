@@ -29,6 +29,7 @@ Type TRect Extends TObject
     Declare Function Height() As Integer
     Declare Function Contains(ByRef vPoint As TPoint) As Boolean
     Declare Function Intersects(ByRef vRect As Const TRect) As Boolean
+    Declare Function GetUnion(ByRef vRect As Const TRect) As TRect
 End Type
 
 ' --- Implementacion de la Clase ---
@@ -84,12 +85,20 @@ Function TRect.Contains(ByRef vPoint As TPoint) As Boolean
 End Function
 
 Function TRect.Intersects(ByRef vRect As Const TRect) As Boolean
-    ' Un rectangulo no intersecta con otro si uno esta totalmente a la izquierda,
-    ' derecha, arriba o abajo del otro.
     If This._B._X < vRect._A._X Or This._A._X > vRect._B._X Then Return False
     If This._B._Y < vRect._A._Y Or This._A._Y > vRect._B._Y Then Return False
-    
     Return True
+End Function
+
+Function TRect.GetUnion(ByRef vRect As Const TRect) As TRect
+    Dim As Integer __minX, __minY, __maxX, __maxY
+    
+    __minX = IIf(This._A._X < vRect._A._X, This._A._X, vRect._A._X)
+    __minY = IIf(This._A._Y < vRect._A._Y, This._A._Y, vRect._A._Y)
+    __maxX = IIf(This._B._X > vRect._B._X, This._B._X, vRect._B._X)
+    __maxY = IIf(This._B._Y > vRect._B._Y, This._B._Y, vRect._B._Y)
+    
+    Return TRect(__minX, __minY, __maxX, __maxY)
 End Function
 
 #endif
