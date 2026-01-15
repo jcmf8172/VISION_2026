@@ -1,15 +1,15 @@
-' VISION_2026: Demostración de Programación Avanzada
-' Uso de Punteros, Gestión de Memoria y Optimización
+' VISION_2026: Demostracion de Programacion Avanzada
+' Uso de Punteros, Gestion de Memoria y Optimizacion
 
-#include "crt.bi" ' Para usar funciones de C como printf o memcpy si fuera necesario
+#include "crt.bi"
 
-Sub ProcesarDatos(ByVal buffer As UByte Ptr, ByVal tamaño As Integer)
-    Print "Procesando buffer de " & tamaño & " bytes..."
+Sub ProcesarDatos(ByVal buffer As UByte Ptr, ByVal tamano As Integer)
+    Print "Procesando buffer de " & tamano & " bytes..."
     
     ' Optimizamos usando un puntero nativo para recorrer la memoria
     Dim As Integer i
-    For i = 0 To tamaño - 1
-        buffer[i] = buffer[i] Xor &HFF ' Operación bitwise rápida
+    For i = 0 To tamano - 1
+        buffer[i] = buffer[i] Xor &HFF ' Operacion bitwise rapida
     Next i
     
     Print "Proceso completado."
@@ -24,7 +24,7 @@ If miBuffer = 0 Then
     End 1
 End If
 
-Print "--- VISION_2026: Advanced Demo ---"
+Print "--- VISION_2026: Advanced Demo (64-bit Optimized) ---"
 Print "Memoria asignada en: " & miBuffer
 
 ' Llenar buffer con datos de prueba
@@ -36,9 +36,9 @@ Dim As Double t1 = Timer
 ProcesarDatos(miBuffer, n)
 Dim As Double t2 = Timer
 
-Print "Tiempo de ejecución: " & (t2 - t1) & " segundos."
+Print "Tiempo de ejecucion: " & (t2 - t1) & " segundos."
 
-' Liberar memoria (Buena práctica)
+' Liberar memoria
 Deallocate(miBuffer)
 Print "Memoria liberada. Presiona una tecla..."
 Sleep

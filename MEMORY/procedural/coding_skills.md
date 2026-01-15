@@ -6,7 +6,7 @@ Este documento contiene "recetas" y procedimientos técnicos que he aprendido pa
 **Procedimiento**:
 1. Asegurarse de que el código no tenga errores de sintaxis.
 2. Ejecutar el compilador con flags de agresividad:
-   `fbc -O 3 -march=native -ffast-math -gen gcc <archivo.bas>`
+   `fbc -gen gcc -Wc -O3 -march=native -ffast-math <archivo.bas>`
 3. Verificar el rendimiento con el comando `time ./<ejecutable>`.
 
 ## Habilidad 2: Implementación de Bucles de Alto Rendimiento
