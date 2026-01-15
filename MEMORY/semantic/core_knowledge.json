@@ -1,0 +1,18 @@
+{
+  "project_name": "VISION_2026",
+  "language": "FreeBASIC 1.10.1",
+  "compiler": "fbc",
+  "architecture": "Hierarchical AI Memory",
+  "entities": [
+    {
+      "name": "Manus",
+      "role": "Autonomous AI Agent",
+      "capabilities": ["GitHub Connector", "Shell Execution", "File Management", "Web Research"]
+    }
+  ],
+  "conventions": {
+    "coding_style": "Procedural/Modular",
+    "documentation": "Markdown",
+    "persistence": "JSON-based file system"
+  }
+}
