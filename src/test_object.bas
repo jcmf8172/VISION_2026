@@ -1,45 +1,33 @@
 ' VISION_2026: test_object.bas
-' Prueba de la jerarquia TObject
+' Prueba de las propiedades Name e ID
 
 #include "TObject.bas"
 
-' Definimos una clase derivada para probar la herencia
+' Clase derivada para probar la sobreescritura de Name
 Type TDerived Extends TObject
-    Declare Constructor()
-    Declare Virtual Function GetClassName() As String Override
-    Declare Virtual Function ToString() As String Override
+    Declare Virtual Property Name() As String Override
 End Type
 
-Constructor TDerived()
-    ' Constructor de TDerived
-End Constructor
-
-Virtual Function TDerived.GetClassName() As String
+Virtual Property TDerived.Name() As String
     Return "TDerived"
-End Function
-
-Virtual Function TDerived.ToString() As String
-    Return "Hola desde " & This.GetClassName()
-End Function
+End Property
 
 ' --- Programa Principal ---
-Print "--- VISION_2026: Object System Test ---"
+Print "--- VISION_2026: Property System Test ---"
 
 Dim As TObject Ptr obj1 = New TObject
-Dim As TObject Ptr obj2 = New TDerived ' Polimorfismo
+Dim As TObject Ptr obj2 = New TDerived
 
 Print "Objeto 1 (Base):"
-obj1->Show()
+Print "  Name: " & obj1->Name
+Print "  ID  : " & obj1->ID
+Print "  Full: "; : obj1->Show()
 
 Print ""
-Print "Objeto 2 (Derivado via Puntero Base):"
-obj2->Show()
-
-Print ""
-Print "Verificando RTTI (Is):"
-If *obj2 Is TDerived Then
-    Print "Confirmado: obj2 es una instancia de TDerived"
-End If
+Print "Objeto 2 (Derivado):"
+Print "  Name: " & obj2->Name
+Print "  ID  : " & obj2->ID
+Print "  Full: "; : obj2->Show()
 
 Delete obj1
 Delete obj2
