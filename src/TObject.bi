@@ -1,5 +1,5 @@
 ' VISION_2026: TObject.bi
-' Clase base fundamental (Definicion e Implementacion consolidadas)
+' Clase base fundamental (Refactorizada segun nuevos estandares)
 
 #ifndef __TOBJECT_BI__
 #define __TOBJECT_BI__
@@ -13,14 +13,14 @@ Type TObject Extends Object
     Declare Virtual Property Name() As String
     Declare Virtual Property ID() As String
     
-    ' Metodos base
-    Declare Virtual Function ToString() As String
+    ' Metodo base
     Declare Sub Show()
 End Type
 
 ' --- Implementacion de la Clase ---
 
 Constructor TObject()
+    ' Constructor base
 End Constructor
 
 Virtual Destructor TObject()
@@ -36,12 +36,8 @@ Virtual Property TObject.ID() As String
     Return "&H" & Hex(@This)
 End Property
 
-Virtual Function TObject.ToString() As String
-    Return "[" & This.Name & " ID: " & This.ID & "]"
-End Function
-
 Sub TObject.Show()
-    Print This.ToString()
+    Print "[" & This.Name & " ID: " & This.ID & "]"
 End Sub
 
 #endif

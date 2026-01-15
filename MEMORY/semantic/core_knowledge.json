@@ -11,7 +11,17 @@
     }
   ],
   "conventions": {
-    "coding_style": "Procedural/Modular",
+    "coding_style": "Object-Oriented (Turbo Vision Style)",
+    "naming_conventions": {
+      "member_variables": "_Variable",
+      "arguments": "vVariable",
+      "local_variables": "__Variable"
+    },
+    "constructor_rules": {
+      "no_empty_constructors": "Use default values instead",
+      "inheritance": "Always use Base()",
+      "copy_constructor": "Required for data objects"
+    },
     "documentation": "Markdown",
     "persistence": "JSON-based file system",
     "project_structure": {
