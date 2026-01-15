@@ -13,6 +13,13 @@
   "conventions": {
     "coding_style": "Procedural/Modular",
     "documentation": "Markdown",
-    "persistence": "JSON-based file system"
+    "persistence": "JSON-based file system",
+    "project_structure": {
+      "src": "Source code (.bas, .bi)",
+      "bin": "Compiled executables",
+      "docs": "Technical documentation",
+      "build": "Temporary build files",
+      "MEMORY": "AI persistence system"
+    }
   }
 }

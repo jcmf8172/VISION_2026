@@ -1,35 +1,40 @@
 #!/bin/bash
-# VISION_2026: Script de Construccion de MAXIMO RENDIMIENTO (64-bit)
+# VISION_2026: Script de Construccion Profesional (64-bit)
 
 if [ -z "$1" ]; then
     echo "Uso: ./build.sh <archivo.bas>"
+    echo "Ejemplo: ./build.sh src/main.bas"
     exit 1
 fi
 
-FILENAME=$1
+INPUT_FILE=$1
+FILENAME=$(basename -- "$INPUT_FILE")
 BASENAME="${FILENAME%.*}"
+
+# Directorios
+BIN_DIR="bin"
+BUILD_DIR="build"
 
 echo "--- COMPILACION DE ELITE: $FILENAME ---"
 
-# Flags de Maximo Rendimiento:
-# -gen gcc: Backend de C para optimizaciones globales.
-# -Wc -Ofast: El nivel mas alto de GCC (incluye -O3 y optimizaciones no estandar de punto flotante).
-# -Wc -march=native: Utiliza todas las instrucciones disponibles en esta CPU (AVX, AVX2, etc).
-# -Wc -funroll-loops: Desenrolla bucles para reducir saltos de CPU.
-# -Wc -ftree-vectorize: Intenta usar instrucciones SIMD (Single Instruction, Multiple Data).
+# Asegurar que los directorios existen
+mkdir -p "$BIN_DIR" "$BUILD_DIR"
 
+# Flags de Maximo Rendimiento
+# -o: Especifica la ruta del ejecutable de salida en la carpeta bin/
 fbc -gen gcc \
     -Wc -Ofast \
     -Wc -march=native \
     -Wc -funroll-loops \
     -Wc -ftree-vectorize \
-    "$FILENAME"
+    -o "$BIN_DIR/$BASENAME" \
+    "$INPUT_FILE"
 
 if [ $? -eq 0 ]; then
     echo "------------------------------------------------"
-    echo "CONSTRUCCION EXITOSA (OPTIMIZADA): ./$BASENAME"
+    echo "CONSTRUCCION EXITOSA: ./$BIN_DIR/$BASENAME"
     echo "------------------------------------------------"
 else
-    echo "Error en la compilacion de alto rendimiento."
+    echo "Error en la compilacion."
     exit 1
 fi
