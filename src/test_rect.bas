@@ -31,6 +31,24 @@ Print "Rectangulo 2 (Copia de R1):"
 Print "  Ancho : " & r2->Width()
 Print "  Alto  : " & r2->Height()
 
+' Prueba de Intersects
+Dim As TRect __rCol = TRect(40, 30, 80, 60) ' Colisiona con R1
+Dim As TRect __rFar = TRect(100, 100, 150, 150) ' No colisiona
+
+Print ""
+Print "Verificando interseccion con R1:"
+If r1->Intersects(__rCol) Then
+    Print "  Resultado con RCol (40,30 a 80,60): COLISIONA"
+Else
+    Print "  Resultado con RCol (40,30 a 80,60): NO COLISIONA"
+End If
+
+If r1->Intersects(__rFar) Then
+    Print "  Resultado con RFar (100,100 a 150,150): COLISIONA"
+Else
+    Print "  Resultado con RFar (100,100 a 150,150): NO COLISIONA"
+End If
+
 Delete r1
 Delete r2
 

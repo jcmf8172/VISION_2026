@@ -28,6 +28,7 @@ Type TRect Extends TObject
     Declare Function Width() As Integer
     Declare Function Height() As Integer
     Declare Function Contains(ByRef vPoint As TPoint) As Boolean
+    Declare Function Intersects(ByRef vRect As Const TRect) As Boolean
 End Type
 
 ' --- Implementacion de la Clase ---
@@ -80,6 +81,15 @@ Function TRect.Contains(ByRef vPoint As TPoint) As Boolean
         End If
     End If
     Return False
+End Function
+
+Function TRect.Intersects(ByRef vRect As Const TRect) As Boolean
+    ' Un rectangulo no intersecta con otro si uno esta totalmente a la izquierda,
+    ' derecha, arriba o abajo del otro.
+    If This._B._X < vRect._A._X Or This._A._X > vRect._B._X Then Return False
+    If This._B._Y < vRect._A._Y Or This._A._Y > vRect._B._Y Then Return False
+    
+    Return True
 End Function
 
 #endif
