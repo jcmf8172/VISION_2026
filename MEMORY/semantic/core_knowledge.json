@@ -20,6 +20,11 @@
       "docs": "Technical documentation",
       "build": "Temporary build files",
       "MEMORY": "AI persistence system"
+    },
+    "object_hierarchy": {
+      "root": "Object (FreeBASIC Built-in)",
+      "base": "TObject (VISION_2026 Base Class)",
+      "features": ["Virtual Destructors", "RTTI Support", "Polymorphism", "ToString/GetClassName"]
     }
   }
 }
