@@ -1,0 +1,24 @@
+{
+  "architecture": "x86_64",
+  "compiler_defaults": {
+    "backend": "gcc",
+    "optimization_flags": ["-O 3", "-march=native", "-ffast-math"],
+    "floating_point": "sse"
+  },
+  "data_types_best_practices": {
+    "native_integer": "Integer (8-byte)",
+    "fixed_32bit": "Long",
+    "pointer_size": "8-byte",
+    "alignment": "Natural alignment (8-byte for 64-bit types)"
+  },
+  "performance_patterns": [
+    "Minimize virtual calls in tight loops",
+    "Prefer Integer over Long for loop counters",
+    "Use -gen gcc for advanced vectorization",
+    "Leverage 16 general-purpose registers"
+  ],
+  "references": [
+    "https://freebasic.net/forum/viewtopic.php?t=32962",
+    "https://freebasic.net/forum/viewtopic.php?t=32143"
+  ]
+}
