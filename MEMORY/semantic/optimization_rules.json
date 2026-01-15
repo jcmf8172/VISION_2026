@@ -2,7 +2,7 @@
   "architecture": "x86_64",
   "compiler_defaults": {
     "backend": "gcc",
-    "optimization_flags": ["-O 3", "-march=native", "-ffast-math"],
+    "optimization_flags": ["-Ofast", "-march=native", "-funroll-loops", "-ftree-vectorize"],
     "floating_point": "sse"
   },
   "data_types_best_practices": {
@@ -13,6 +13,8 @@
   },
   "performance_patterns": [
     "Minimize virtual calls in tight loops",
+    "Use -Ofast for non-standard math optimizations",
+    "Enable loop unrolling and tree vectorization",
     "Prefer Integer over Long for loop counters",
     "Use -gen gcc for advanced vectorization",
     "Leverage 16 general-purpose registers"

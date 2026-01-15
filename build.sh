@@ -1,5 +1,5 @@
 #!/bin/bash
-# VISION_2026: Script de Construccion Optimizada (64-bit)
+# VISION_2026: Script de Construccion de MAXIMO RENDIMIENTO (64-bit)
 
 if [ -z "$1" ]; then
     echo "Uso: ./build.sh <archivo.bas>"
@@ -9,17 +9,27 @@ fi
 FILENAME=$1
 BASENAME="${FILENAME%.*}"
 
-echo "Compilando $FILENAME con optimizaciones de 64 bits..."
+echo "--- COMPILACION DE ELITE: $FILENAME ---"
 
-# Flags explicados:
-# -gen gcc: Usa el backend de C (necesario para optimizaciones avanzadas)
-# -Wc -O3: Pasa el nivel de optimizacion 3 directamente a GCC
-# -Wc -ffast-math: Optimizaciones matematicas rapidas
-fbc -gen gcc -Wc -O3 -Wc -ffast-math "$FILENAME"
+# Flags de Maximo Rendimiento:
+# -gen gcc: Backend de C para optimizaciones globales.
+# -Wc -Ofast: El nivel mas alto de GCC (incluye -O3 y optimizaciones no estandar de punto flotante).
+# -Wc -march=native: Utiliza todas las instrucciones disponibles en esta CPU (AVX, AVX2, etc).
+# -Wc -funroll-loops: Desenrolla bucles para reducir saltos de CPU.
+# -Wc -ftree-vectorize: Intenta usar instrucciones SIMD (Single Instruction, Multiple Data).
+
+fbc -gen gcc \
+    -Wc -Ofast \
+    -Wc -march=native \
+    -Wc -funroll-loops \
+    -Wc -ftree-vectorize \
+    "$FILENAME"
 
 if [ $? -eq 0 ]; then
-    echo "Construccion exitosa: ./$BASENAME"
+    echo "------------------------------------------------"
+    echo "CONSTRUCCION EXITOSA (OPTIMIZADA): ./$BASENAME"
+    echo "------------------------------------------------"
 else
-    echo "Error en la compilacion."
+    echo "Error en la compilacion de alto rendimiento."
     exit 1
 fi
